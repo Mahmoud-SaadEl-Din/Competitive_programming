@@ -3,7 +3,7 @@
 #include <vector>
 #include<string>
 #include <set>
-
+#include<map>
 using namespace std;
 const int MAX = 1000001;
 
@@ -179,7 +179,71 @@ void utilies(){
 /* End of Sets */
 
 /* MAP */
+void init_map(){
+    map<int,string> m { {1,"Ali"}, {2,"AA"}, {3,"BB"}};
+    for(auto mm:m){
+        cout << mm.first << mm.second << endl;
+    }
 
+    m[552] = "Ahmed";
+
+    map<int, string>::iterator it = m.begin();
+
+    cout << it->first << it->second << endl;
+
+    for(; it!=m.end(); ++it){
+        cout << it->first << it->second << endl;
+    }
+
+}
+
+void check_exsitance(){
+    map<int,string> m { {1,"Ali"}, {2,"AA"}, {3,"BB"}};
+    m.count(1);
+    m.count(10);
+
+    m.insert(pair<int,string>(10,"Saad"));
+    m.insert({10,"Saad"});
+
+    // insert effeciently .. insert at last pointer insertion
+    auto it = m.begin();
+    it = m.insert(it, {40, "s"});
+    m.insert(it,{40, "d"});
+
+}
+
+void copy_to_maps(){
+    
+    map<int,string> m { {1,"Ali"}, {2,"AA"}, {3,"BB"}};
+    map<int,string> m2;
+
+    m2.insert(m.begin(), m.find(1));
+
+    m2.emplace(30,"l");
+    auto it = m2.begin();
+    m2.emplace(it,22,"trika");
+
+    m2.erase(22);
+    auto it = m2.begin();
+    m2.erase(it);
+    m.erase(it,m.find(2));
+
+    auto it = m.equal_range(1);
+
+    cout << it->first << it->second << endl;
+    cout << it->first << it->second << endl;
+}
+
+void utilities(){
+    map<int,string> m { {1,"Ali"}, {2,"AA"}, {3,"BB"}};
+
+    m.empty();
+    m.max_size();
+    m.size();
+    m.swap(m);
+    m.clear();
+    
+}
 /* END OF MAP */
 ///////////////////////////////// STL Part /////////////////////////////////////////
 
